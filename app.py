@@ -7,18 +7,33 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Das radikale CSS, das die Admin-Elemente direkt im Browser der User unsichtbar macht
+# Das ultimative Vorschlaghammer-CSS gegen die Toolbar und Admin-Elemente
 st.markdown("""
     <style>
-    /* Blendet den Deploy-Button, das Menü und die Admin-Krone aus */
-    .stAppDeployButton {display: none !important; visibility: hidden !important;}
-    #MainMenu {display: none !important; visibility: hidden !important;}
-    header {display: none !important; visibility: hidden !important;}
-    footer {display: none !important; visibility: hidden !important;}
+    /* 1. Jedes denkbare Header- und Footer-Element komplett eliminieren */
+    header, footer, [data-testid="stHeader"], [data-testid="stFooter"], .stAppDeployButton, #MainMenu {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 %important;
+    }
     
-    /* Trifft die Toolbar-Elemente am unteren Rand */
-    [data-testid="stStatusWidget"] {display: none !important; visibility: hidden !important;}
-    .stDecoration {display: none !important; visibility: hidden !important;}
+    /* 2. Den absolut obersten und untersten Rand der App komplett leeren */
+    .st-emotion-cache-18ni7th, .st-emotion-cache-z5fcl4, .stDecoration {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* 3. Radikaler Rundumschlag: Blendet ALLES aus, was sich am ganz unteren Bildschirmrand anheften will */
+    div[class^="st-emotion-cache"] > footer, div[id^="root"] > div > div > header {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* 4. Sicherstellen, dass durch das Ausblenden kein weißer Rand entsteht */
+    .stApp {
+        background-color: #1a0508 !important;
+        color: #ffffff !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
