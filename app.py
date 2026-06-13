@@ -1,6 +1,5 @@
 import streamlit as st
 
-# Nur die ganz normalen Seiteneinstellungen – kein CSS-Code mehr!
 st.set_page_config(
     page_title="Wein-Zeit",
     page_icon="🍷",
@@ -8,7 +7,20 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Premium placeholder wine menu data
+# Das radikale CSS, das die Admin-Elemente direkt im Browser der User unsichtbar macht
+st.markdown("""
+    <style>
+    /* Blendet den Deploy-Button, das Menü und die Admin-Krone aus */
+    .stAppDeployButton {display: none !important; visibility: hidden !important;}
+    #MainMenu {display: none !important; visibility: hidden !important;}
+    header {display: none !important; visibility: hidden !important;}
+    footer {display: none !important; visibility: hidden !important;}
+    
+    /* Trifft die Toolbar-Elemente am unteren Rand */
+    [data-testid="stStatusWidget"] {display: none !important; visibility: hidden !important;}
+    .stDecoration {display: none !important; visibility: hidden !important;}
+    </style>
+""", unsafe_allow_html=True)
 
 # Premium placeholder wine menu data
 WINE_DATA = {
