@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Configure page settings first (Inklusive eingeklappter Sidebar)
+# Configure page settings first
 st.set_page_config(
     page_title="Wein-Zeit",
     page_icon="🍷",
@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Ultimativer CSS-Block, um die Leiste für Gäste unsichtbar zu machen
+# Das ultimative CSS gegen die weiße "Built with Streamlit"-Leiste im Embed-Modus
 hide_style = """
     <style>
     [data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
@@ -16,7 +16,11 @@ hide_style = """
     .stAppDeployButton {visibility: hidden !important; display: none !important;}
     #MainMenu {visibility: hidden !important; display: none !important;}
     header {visibility: hidden !important; display: none !important;}
-    stDecoration {visibility: hidden !important; display: none !important;}
+    stDecoration {display: none !important; display: none !important;}
+    
+    /* Diese Zeilen löschen die weiße Leiste am unteren Bildschirmrand */
+    [data-testid="stEmbedFooter"] {display: none !important; visibility: hidden !important;}
+    .st-emotion-cache-z5fcl4 {display: none !important;}
     </style>
 """
 st.markdown(hide_style, unsafe_allow_html=True)
