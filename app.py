@@ -1,6 +1,6 @@
 import streamlit as st
 
-# 1. Seiteneinstellungen festlegen
+# Nur die ganz normalen Seiteneinstellungen – kein CSS-Code mehr!
 st.set_page_config(
     page_title="Wein-Zeit",
     page_icon="🍷",
@@ -8,35 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. Weinrotes Design UND Ausblenden der weißen Leiste erzwingen
-# Das sorgt dafür, dass die App IMMER dunkelrot bleibt – egal ob Embed-Modus oder nicht!
-custom_style = """
-    <style>
-    /* Hintergrundfarbe auf das tiefe Weinrot/Dunkel setzen */
-    .stApp {
-        background-color: #1a0508 !important;
-        color: #ffffff !important;
-    }
-    
-    /* Komplettes Ausblenden der störenden Streamlit-Elemente */
-    [data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
-    footer {visibility: hidden !important; display: none !important;}
-    .stAppDeployButton {visibility: hidden !important; display: none !important;}
-    #MainMenu {visibility: hidden !important; display: none !important;}
-    header {visibility: hidden !important; display: none !important;}
-    stDecoration {visibility: hidden !important; display: none !important;}
-    
-    /* Die weiße Leiste am unteren Bildschirmrand im Embed-Modus eliminieren */
-    [data-testid="stEmbedFooter"] {display: none !important; visibility: hidden !important;}
-    footer, .st-emotion-cache-z5fcl4, .stEmbedFooter {display: none !important; visibility: hidden !important;}
-    
-    /* Sicherstellen, dass Texte in Eingabefeldern lesbar bleiben */
-    .stSelectbox, .stRadio, p, h1, h2, h3 {
-        color: #ffffff !important;
-    }
-    </style>
-"""
-st.markdown(custom_style, unsafe_allow_html=True)
+# Premium placeholder wine menu data
 
 # Premium placeholder wine menu data
 WINE_DATA = {
