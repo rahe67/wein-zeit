@@ -530,13 +530,16 @@ with tab2:
                 """,
                 unsafe_allow_html=True
             )
-# Dieser Block blendet die Leiste unten rechts komplett aus
-hide_style = """
+# Ultimativer Block zum Ausblenden aller Leisten, Kronen und Menüs
+hide_everything_style = """
     <style>
-    [data-testid="stStatusWidget"] {display: none !important;}
-    footer {visibility: hidden !important;}
-    .stAppDeployButton {display: none !important;}
-    stDecoration {display: none !important;}
+    [data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
+    footer {visibility: hidden !important; display: none !important;}
+    .stAppDeployButton {visibility: hidden !important; display: none !important;}
+    #MainMenu {visibility: hidden !important; display: none !important;}
+    header {visibility: hidden !important; display: none !important;}
+    stDecoration {visibility: hidden !important; display: none !important;}
+    [data-testid="stSidebarCollapseButton"] {visibility: hidden !important;}
     </style>
 """
-st.markdown(hide_style, unsafe_allow_html=True)
+st.markdown(hide_everything_style, unsafe_allow_html=True)
