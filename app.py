@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Configure page settings first
+# 1. Seiteneinstellungen festlegen
 st.set_page_config(
     page_title="Wein-Zeit",
     page_icon="🍷",
@@ -8,22 +8,35 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Das ultimative CSS gegen die weiße "Built with Streamlit"-Leiste im Embed-Modus
-hide_style = """
+# 2. Weinrotes Design UND Ausblenden der weißen Leiste erzwingen
+# Das sorgt dafür, dass die App IMMER dunkelrot bleibt – egal ob Embed-Modus oder nicht!
+custom_style = """
     <style>
+    /* Hintergrundfarbe auf das tiefe Weinrot/Dunkel setzen */
+    .stApp {
+        background-color: #1a0508 !important;
+        color: #ffffff !important;
+    }
+    
+    /* Komplettes Ausblenden der störenden Streamlit-Elemente */
     [data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
     footer {visibility: hidden !important; display: none !important;}
     .stAppDeployButton {visibility: hidden !important; display: none !important;}
     #MainMenu {visibility: hidden !important; display: none !important;}
     header {visibility: hidden !important; display: none !important;}
-    stDecoration {display: none !important; display: none !important;}
+    stDecoration {visibility: hidden !important; display: none !important;}
     
-    /* Diese Zeilen löschen die weiße Leiste am unteren Bildschirmrand */
+    /* Die weiße Leiste am unteren Bildschirmrand im Embed-Modus eliminieren */
     [data-testid="stEmbedFooter"] {display: none !important; visibility: hidden !important;}
-    .st-emotion-cache-z5fcl4 {display: none !important;}
+    footer, .st-emotion-cache-z5fcl4, .stEmbedFooter {display: none !important; visibility: hidden !important;}
+    
+    /* Sicherstellen, dass Texte in Eingabefeldern lesbar bleiben */
+    .stSelectbox, .stRadio, p, h1, h2, h3 {
+        color: #ffffff !important;
+    }
     </style>
 """
-st.markdown(hide_style, unsafe_allow_html=True)
+st.markdown(custom_style, unsafe_allow_html=True)
 
 # Premium placeholder wine menu data
 WINE_DATA = {
