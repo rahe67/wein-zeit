@@ -1,12 +1,25 @@
 import streamlit as st
 
-# Configure page settings first
+# Configure page settings first (Inklusive eingeklappter Sidebar)
 st.set_page_config(
     page_title="Wein-Zeit",
     page_icon="🍷",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
+
+# Ultimativer CSS-Block, um die Leiste für Gäste unsichtbar zu machen
+hide_style = """
+    <style>
+    [data-testid="stStatusWidget"] {visibility: hidden !important; display: none !important;}
+    footer {visibility: hidden !important; display: none !important;}
+    .stAppDeployButton {visibility: hidden !important; display: none !important;}
+    #MainMenu {visibility: hidden !important; display: none !important;}
+    header {visibility: hidden !important; display: none !important;}
+    stDecoration {visibility: hidden !important; display: none !important;}
+    </style>
+"""
+st.markdown(hide_style, unsafe_allow_html=True)
 
 # Premium placeholder wine menu data
 WINE_DATA = {
