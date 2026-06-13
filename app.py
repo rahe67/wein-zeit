@@ -530,3 +530,13 @@ with tab2:
                 """,
                 unsafe_allow_html=True
             )
+# Dieser Block blendet die Leiste unten rechts komplett aus
+hide_style = """
+    <style>
+    [data-testid="stStatusWidget"] {display: none !important;}
+    footer {visibility: hidden !important;}
+    .stAppDeployButton {display: none !important;}
+    stDecoration {display: none !important;}
+    </style>
+"""
+st.markdown(hide_style, unsafe_allow_html=True)
